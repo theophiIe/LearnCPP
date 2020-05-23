@@ -5,7 +5,12 @@
 
 int main(int argc, char const *argv[])
 {
-	Human h{};
+	Human h{"test"};
 	Human h2{};
+
+	Human h3{"Theo", 21};
+
+	Human h4{h3};
+	
 	return 0;
 }
