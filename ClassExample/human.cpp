@@ -28,8 +28,25 @@ Human::Human(const Human &other)
 	mAge  = other.mAge;
 }
 
+std::string Human::getName() const
+{
+	return mName;
+}
+
+void Human::setName(const std::string name)
+{
+	mName = name;
+}
+
+void Human::hello()
+{
+	std::cout << "Hello world" << std::endl;
+}
+
 Human::~Human()
 {
 	// this permet de faire reference à l'objet qu'on utilise
 	std::cout << "Destruction/Libération de la mémoire de la classe Human, son adresse : " << this << std::endl;
 }
+
+
