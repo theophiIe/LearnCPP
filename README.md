@@ -36,5 +36,10 @@ g++ -std=c++17 *.cpp -o prog
     
 ### L'optimisation
 ```
--O1 -O2 -O3
+-O1 -O2 -O3 -Os -Ofast
+```
+
+### Debug
+```
+-g -ggdb
 ```
