@@ -22,16 +22,16 @@ void exo1_Q2()
 	tab[1] = "machin";
 	tab[2] = "chose";
 
-	for (int i{}; i < 3; ++i)
+	for (auto i{0U}; i < std::size(*tab) - 1; ++i)
 		std::cout << tab[i] << std::endl;
 
 	delete [] tab;
 }
 
-int main(int argc, char const *argv[])
+int main()
 {
 	exo1_Q1();
 	exo1_Q2();
-	
+
 	return 0;
 }
