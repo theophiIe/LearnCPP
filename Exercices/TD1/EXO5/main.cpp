@@ -11,11 +11,11 @@ int main()
 
 	Segment seg{p1, p2};
 	
+	seg.longueur();	
 
 	if(seg.estVertical())
 		std::cout << "Le segment est vertical" << std::endl;
 	
-
 	if(seg.estHorizontal())
 		std::cout << "Le segment est horizontal" << std::endl;
 	
