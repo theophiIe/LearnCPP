@@ -1,6 +1,6 @@
 CC = g++
 EXEC = main
-CFLAGS = -Wall -Wextra -g -O2
+CFLAGS = -std=c++17 -Wall -Wextra -g -O2
 
 all : clean compile
 	./$(EXEC)
@@ -13,5 +13,4 @@ valgrind: compile
 
 clean:
 	rm -rf $(EXEC)
-	rm -rf *.txt
 	ls
