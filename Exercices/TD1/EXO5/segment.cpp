@@ -3,10 +3,8 @@
 
 #include "segment.hpp"
 #include "point.hpp"
-Segment::Segment()
-{
 
-}
+Segment::Segment(){}
 
 Segment::Segment(const Point &point1, const Point &point2)
 {
@@ -31,7 +29,7 @@ void Segment::longueur() const
 
 	else
 		y = p1.getY() - p2.getY();
-	
+
 	std::cout << "La longueur est de : " << sqrt(x*x + y*y) << "cm" << std::endl;
 }
 
