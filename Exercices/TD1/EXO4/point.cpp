@@ -19,16 +19,9 @@ Point::Point(const Point &p)
 	y = p.y;
 }
 
-int Point::getX() const
-{
-	return x;
-}
+int Point::getX() const{ return x; }
 
-
-int Point::getY() const
-{
-	return y;
-}
+int Point::getY() const { return y; }
 
 void Point::afficher()
 {
@@ -42,10 +35,6 @@ void Point::cloner(const Point &p)
 	y = p.y;
 }
 
-Point::~Point()
-{
-	// this permet de faire reference à l'objet qu'on utilise
-	std::cout << "Destruction/Libération de la mémoire de la classe Human, son adresse : " << this << std::endl;
-}
+Point::~Point() { std::cout << "Destruction de la classe Point" << std::endl; }
 
 
