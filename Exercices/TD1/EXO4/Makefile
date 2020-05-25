@@ -6,7 +6,7 @@ all : clean compile
 	./$(EXEC)
 
 compile :
-	$(CC) $(CFLAGS) main.cpp -o $(EXEC)
+	$(CC) $(CFLAGS) *.cpp -o $(EXEC)
 
 valgrind: compile
 	valgrind --leak-check=full -v ./$(EXEC)
