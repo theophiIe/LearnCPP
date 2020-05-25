@@ -1,24 +1,25 @@
 #if !defined(__SEGMENT__)
 #define __SEGMENT__
+	
+	#include "point.hpp"
 
 	class Segment
 	{
 		public :
 			Segment();
-			Segment(int px, int py);
-			Segment(const Point &p);
+			Segment(const Point &point1, const Point &point2);
 
-			int getX() const;
-			int getY() const;
+			void longueur() const;
 
-			void afficher();
-			void cloner(const Point &p);
+			bool estVertical() const;
+			bool estHorizontal() const;
+			bool estSurDiagonal() const;
 
 			~Segment(); 
 
 		private :
-			int x;
-			int y;
+			Point p1{};
+			Point p2{};
 	};
 
 #endif
