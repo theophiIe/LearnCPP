@@ -1,0 +1,25 @@
+Surcharge d'opérateur :
+https://docs.microsoft.com/fr-fr/cpp/standard-library/overloading-the-output-operator-for-your-own-classes?view=vs-2019
+http://casteyde.christian.free.fr/cpp/cours/online/x3244.html
+https://openclassrooms.com/fr/courses/1894236-programmez-avec-le-langage-c/1897891-surchargez-un-operateur
+
+Utilisation de static :
+https://cpp.developpez.com/faq/cpp/?page=Les-donnees-et-fonctions-membres-statiques
+
+Initialisation, concaténation et conversion des chaînes :
+http://guillaume.belz.free.fr/doku.php?id=string
+
+Les nouvelles variables : 
+https://openclassrooms.com/fr/courses/1421911-du-c-au-c/1422263-nouveautes-pour-les-variables
+
+Les pointeurs intellignets :
+https://docs.microsoft.com/fr-fr/cpp/cpp/smart-pointers-modern-cpp?view=vs-2019
+
+Tutoriel : C++ : Gérer correctement ses allocations dynamiques :
+http://pub.phyks.me/sdz/sdz/c-gerer-correctement-ses-allocations-dynamiques.html
+
+Utilisation de ping avec des sockets : 
+https://www.geeksforgeeks.org/ping-in-c/
+
+Formun cpp les actus :
+https://cpp.developpez.com/
