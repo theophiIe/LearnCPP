@@ -1,4 +1,4 @@
-# LeanCPP
+# LearnCPP
 
 ## Compiler en C++
 Compilation classique d'un programme :
