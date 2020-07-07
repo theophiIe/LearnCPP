@@ -43,3 +43,14 @@ g++ -std=c++17 *.cpp -o prog
 ```
 -g -ggdb
 ```
+
+### Liens
+```
+https://arne-mertz.developpez.com/tutoriels/fonctionnalites-cpp-modernes/decltype-std-declval/
+https://cpp.developpez.com/tutoriels/cpp-17/fonctionnalites-simples-simplifier-code/
+https://fr.cppreference.com/w/cpp/utility/tuple
+http://www.cplusplus.com/reference/thread/
+https://blog.tartanllama.xyz/deduction-for-class-templates/
+https://google.github.io/styleguide/cppguide.html
+https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md#S-performance
+```
