@@ -2,43 +2,87 @@
 #include <ctime>
 #include <iomanip>
 
-enum Jour
+int debutMois()
 {
-	Lundi,
-	Mardi,
-    Mercredi,
-    Jeudi,
-    Vendredi,
-    Samedi,
-    Dimanche
-};
+    time_t tmm = time(0);
+    tm *t;
+    t = localtime(&tmm);
 
-int main()
+    return t->tm_wday - (t->tm_mday) % 7 + 1;
+}
+
+int finMois()
 {
-    std::cout << "Calendrier " << std::endl;
+    time_t actuel = time(0);
+    tm *ltm = localtime(&actuel);
 
+    if(1 + ltm->tm_mon == 2)
+    {
+        return ((1900 + ltm->tm_year)%4 == 0) ? 29+1 : 28+1;
+    }
+
+    else if(1 + ltm->tm_mon < 8)
+    {
+        return ((1 + ltm->tm_mon)%2 == 0) ? 30+1 : 31+1;
+    }
+
+    else
+    {
+        return ((1 + ltm->tm_mon)%2 == 0) ? 31+1 : 30+1;
+    }
+}
+
+void affichage()
+{
     time_t tmm = time(0);
     char* dt = ctime(&tmm);
 
-    std::cout << "Nombre de sec depuis Janvier 1,1970: : " << tmm << std::endl;
+    std::cout << std::setfill('-') << std::setw(38) << "" << std::setfill(' ') << std::endl;
+	std::cout << std::setw(33) << dt;
+    std::cout << std::setfill('-') << std::setw(38) << "" << std::setfill(' ') << std::endl;
+    std::cout << "   lu   ma   me   je   ve   sa   di" << std::endl;
+    std::cout << std::setw(5*debutMois()) << "01";
 
-    std::cout << "La date et l'heure sont : " << dt << std::endl;
+    auto jour{2};
+    auto pos{debutMois()};
+
+    while(pos<7)
+    {
+        std::cout << std::setw(4) << "0" << jour;            
+
+        jour++;
+        pos++;
+    }
+
+    std::cout << std::endl;
     
-    tm *g = gmtime(&tmm);
-    dt = asctime(g);
+    pos=1;
+    while(jour<finMois())
+    {
+        if(5*(debutMois()+1) < 5*7)
+        {
+            if(jour<10)
+            {
+                std::cout << std::setw(4) << "0" << jour;
+            }
 
-    std::cout << "La date et l'heure en UTC sont : " << dt << std::endl;
+            else
+            {
+                std::cout << std::setw(5) << jour;
+            }
+            
+        }
 
-    tm *ltm = localtime(&tmm);
+        if(pos%7==0)
+            std::cout << std::endl;
+        jour++;
+        pos++;
+    }
+}
 
-    std::cout << "Année : " << 1900 + ltm->tm_year << std::endl;
-    std::cout << "Mois : " << 1 + ltm->tm_mon << std::endl;
-    std::cout << "Day : " << ltm->tm_mday << std::endl;
-    std::cout << "Jour : " << 1 + ltm->tm_hour << std::endl;
-
-	std::cout << std::setfill('-') << std::setw(50) << "" << std::endl;
-	std::cout << std::setfill(' ') << std::setw(15) << 1 + ltm->tm_mon <<", " <<  1900 + ltm->tm_year << std::endl;
-    std::cout << std::setfill('-') << std::setw(50) << "" << std::endl;
-
+int main()
+{
+    affichage();
+    std::cout << std::endl;
 	return 0;
 }
