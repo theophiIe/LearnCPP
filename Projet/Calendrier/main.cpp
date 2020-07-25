@@ -2,6 +2,26 @@
 #include <ctime>
 #include <iomanip>
 
+int jourActuel(tm *t, int jour)
+{
+    if(t->tm_mday == jour && jour < 10)
+    {
+        std::cout << std::setw(8) << "\x1B[31m" << "0" << jour << "\033[0m";
+        return 1;
+    }
+
+    else if(t->tm_mday == jour && jour >= 10)
+    {
+        std::cout << std::setw(8) << "\x1B[31m" << jour << "\033[0m";
+        return 1;
+    }
+
+    else
+    {
+        return 0;
+    }
+}
+
 int debutMois(tm *t)
 {
     return t->tm_wday - (t->tm_mday) % 7 + 1;
@@ -25,11 +45,14 @@ int finMois(tm *t)
     }
 }
 
-void premiereLigne(int &pos, int &jour)
+void premiereLigne(tm *t, int &pos, int &jour)
 {
     while(pos<7)
     {
-        std::cout << std::setw(4) << "0" << jour;            
+        if(!jourActuel(t, jour))
+        {
+            std::cout << std::setw(4) << "0" << jour;            
+        }
 
         jour++;
         pos++;
@@ -42,23 +65,25 @@ void autreLigne(tm *t, int &pos, int &jour)
     {
         if(5*(debutMois(t)+1) < 5*7)
         {
-            if(jour<10)
+            if(!jourActuel(t, jour))
             {
-                std::cout << std::setw(4) << "0" << jour;
-            }
+                if(jour<10)
+                {
+                    std::cout << std::setw(4) << "0" << jour;
+                }
 
-            else
-            {
-                std::cout << std::setw(5) << jour;
+                else
+                {
+                    std::cout << std::setw(5) << jour;
+                }
             }
-            
         }
 
         if(pos%7==0)
         {
             std::cout << std::endl;
         }
-        
+
         jour++;
         pos++;
     }
@@ -72,12 +97,12 @@ void affichage(tm *t, time_t tmm)
 	std::cout << std::setw(33) << dt;
     std::cout << std::setfill('-') << std::setw(38) << "" << std::setfill(' ') << std::endl;
     std::cout << "   lu   ma   me   je   ve   sa   di" << std::endl;
-    std::cout << std::setw(5*debutMois(t)) << "01";
+    std::cout << std::setw(5*debutMois(t)) << ((t->tm_mday == '1') ? "\x1B[31m01\033[0m" : "01");
 
     auto jour{2};
     auto pos{debutMois(t)};
 
-    premiereLigne(pos, jour);
+    premiereLigne(t, pos, jour);
 
     std::cout << std::endl;
     
@@ -91,7 +116,6 @@ int main()
 {
     time_t tmm = time(0);
     tm *t = localtime(&tmm);
-    
     affichage(t, tmm);
 
 	return 0;
