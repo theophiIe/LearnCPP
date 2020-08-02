@@ -24,7 +24,20 @@ int jourActuel(tm *t, int jour)
 
 int debutMois(tm *t)
 {
-    return t->tm_wday - (t->tm_mday) % 7 + 1;
+    if (t->tm_wday + 7 < t->tm_mday % 7)
+    {
+        return (t->tm_wday) - (t->tm_mday % 7) % 7 + 1;
+    }
+
+    else if (t->tm_wday < t->tm_mday % 7)
+    {
+        return (t->tm_wday + 7) - (t->tm_mday % 7) % 7 + 1;
+    }
+    
+    else
+    {
+        return (t->tm_wday) - (t->tm_mday) % 7 + 1;
+    }
 }
 
 int finMois(tm *t)
@@ -63,7 +76,7 @@ void autreLigne(tm *t, int &pos, int &jour)
 {
     while(jour<finMois(t))
     {
-        if(5*(debutMois(t)+1) < 5*7)
+        if(5*debutMois(t) <= 5*7)
         {
             if(!jourActuel(t, jour))
             {
@@ -97,8 +110,17 @@ void affichage(tm *t, time_t tmm)
 	std::cout << std::setw(33) << dt;
     std::cout << std::setfill('-') << std::setw(38) << "" << std::setfill(' ') << std::endl;
     std::cout << "   lu   ma   me   je   ve   sa   di" << std::endl;
-    std::cout << std::setw(5*debutMois(t)) << ((t->tm_mday == '1') ? "\x1B[31m01\033[0m" : "01");
 
+    std::cout << std::setw(5*debutMois(t));
+    if (t->tm_mday == 1)
+    {
+         std::cout << std::setw(5*debutMois(t)+9) << "\x1B[31m01\033[0m";
+    }
+    else
+    {
+         std::cout << "01";
+    }
+    
     auto jour{2};
     auto pos{debutMois(t)};
 
